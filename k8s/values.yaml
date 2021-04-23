@@ -113,10 +113,10 @@ pingfederate-admin:
     PF_CONSOLE_AUTHENTICATION: NATIVE
     PF_ADMIN_API_AUTHENTICATION: NATIVE
     SERVER_PROFILE_BASE_PATH: server-profiles/pingfederate
-    SERVER_PROFILE_BASE_URL: https://github.com/PandikKumar/citadel
+    SERVER_PROFILE_BASE_URL: https://github.com/PandikKumar/citadel-devops-vikram
     SERVER_PROFILE_PARENT: BASE
     SERVER_PROFILE_PATH: server-profiles/pingfederate-admin
-    SERVER_PROFILE_URL: https://github.com/PandikKumar/citadel
+    SERVER_PROFILE_URL: https://github.com/PandikKumar/citadel-devops-vikram
     NODE_TAG: "EAST"
     #SERVER_PROFILE_GIT_USER: root
     #SERVER_PROFILE_GIT_PASSWORD: Admin123$
@@ -180,7 +180,7 @@ pingfederate-engine:
     PF_ENGINE_SECONDARY_PORT: "9032"
     PF_CONSOLE_AUTHENTICATION: LDAP
     PF_ADMIN_API_AUTHENTICATION: LDAP
-    SERVER_PROFILE_URL:  https://github.com/PandikKumar/citadel
+    SERVER_PROFILE_URL:  https://github.com/PandikKumar/citadel-devops-vikram
     SERVER_PROFILE_PATH: server-profiles/pingfederate
     NODE_TAG: "EAST"
     #SERVER_PROFILE_GIT_USER: root
@@ -189,7 +189,7 @@ pingfederate-engine:
     waitFor:
       pingfederate-admin:
         service: https
-    replicaCount: 3
+    replicaCount: 1
     resources:
       requests:
         cpu: 0
