@@ -95,7 +95,7 @@ ldap.url=${ADMIN_LDAP_URL}
 #   Example for PingDirectory:
 #     ldap.username=uid=user1,OU=People,DC=domain,DC=com
 #
-ldap.username=${PF_LDAP_USERNAME}
+ldap.username=${PFLDAPUSERNAME}
 
 
 #   ----------------------------------------------------
@@ -117,7 +117,7 @@ ldap.username=${PF_LDAP_USERNAME}
 #   Copy complete result into property value, as shown in the example below:
 #     ldap.password=OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVEU0dVZjcU1wayIsInZlcnNpb24iOiI3LjEuMjAwLjQtU05BUFNIT1QifQ..8Zf_xQ4PuXuYkdE0culPpA.E2Lh_zAne5YpaJo9wbl39A.Z8wVd6SFB8lcQbvutU1u-Q
 #
-ldap.password=${PF_LDAP_PASSWORD}
+ldap.password=${PFLDAPPASSWORD}
 
 # Enable LDAPS connections Hostname verification.
 #

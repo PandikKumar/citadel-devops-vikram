@@ -46,8 +46,8 @@ global:
        
   envs:
     ADMIN_LDAP_URL: ldaps://f5-gdc.citadelgroup.com
-    PFLDAPUSERNAMESS: TestUser
-    PFLDAPPASSWORDSS: TestPassword
+    PFLDAPUSERNAME: TestUser
+    PFLDAPPASSWORD: TestPassword
     ADMIN_USER_BASE_DN: DC=citadelgroup,DC=com
     ADMIN_GROUP_BASE_DN: OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com 
     ADMIN_LDAP_USER_FILTER: (&(objectclass=person)(sAMAccountName=${0})(extensionAttribute14=user))
@@ -118,6 +118,7 @@ pingfederate-admin:
     SERVER_PROFILE_PATH: server-profiles/pingfederate-admin
     SERVER_PROFILE_URL: https://github.com/PandikKumar/citadel-devops-vikram
     NODE_TAG: "EAST"
+    VERBOSE: "true"
     #SERVER_PROFILE_GIT_USER: root
     #SERVER_PROFILE_GIT_PASSWORD: Admin123$
     
