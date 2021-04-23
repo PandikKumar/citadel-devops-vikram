@@ -167,7 +167,7 @@ pingfederate-admin:
           - pingfederate-admin._defaultDomain_
 
 #############################################################
-# pingfederate-engine values
+# pingfederate-engine values.
 #############################################################
 pingfederate-engine:
   enabled: true
