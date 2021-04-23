@@ -1,0 +1,14 @@
+{{- include "pinglib.configmap" (list . "pingfederate-engine") -}}
+
+
+{{- define "pingfederate-engine.configmap" -}}
+{{- $top := index . 0 -}}
+{{- $v := index . 1 -}}
+data:
+  OPERATIONAL_MODE: CLUSTERED_ENGINE
+  CLUSTER_BIND_ADDRESS: "NON_LOOPBACK"
+  CLUSTER_NAME: {{ $top.Release.Name | quote }}
+#  DNS_QUERY_LOCATION: "{{ include "pinglib.fullname" . }}-cluster.{{ $top.Release.Namespace }}.svc.cluster.local"
+  DNS_QUERY_LOCATION: "pingfed-{{ $top.Release.Name }}-cluster.{{ $top.Release.Namespace }}.svc.cluster.local"
+  DNS_RECORD_TYPE: "A"
+{{- end -}}

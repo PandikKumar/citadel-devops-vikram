@@ -1,0 +1,38 @@
+# .suppress-container-warning
+# 
+# NOTICE: Settings in this file will override values set at the
+#         image or orchestraton layers of the container.  Examples
+#         include variables that are specific to this server profile.
+#         Options include:
+#
+# ALWAYS OVERRIDE the value in the container
+#   NAME=VAL        
+#
+# SET TO DEFAULT VALUE if not already set       
+#   export NAME=${NAME:=myDefaultValue}  # Sets to string of "myDefaultValue"
+#   export NAME=${NAME:-OTHER_VAR}       # Sets ot value of OTHER_VAR variable
+# 
+
+export PF_LOG_LEVEL=${PF_LOG_LEVEL:=INFO}
+
+## Hostnames used in this profile and to be aware of
+export PF_ADMIN_PUBLIC_HOSTNAME=${PF_ADMIN_PUBLIC_HOSTNAME:=localhost}
+export PF_ADMIN_PUBLIC_PORT_HTTPS=${PF_ADMIN_PUBLIC_PORT_HTTPS:=9999}
+export PF_ENGINE_PUBLIC_HOSTNAME=${PF_ENGINE_PUBLIC_HOSTNAME:=localhost}
+export PF_ENGINE_PUBLIC_PORT_HTTPS=${PF_ENGINE_PUBLIC_PORT_HTTPS:=9031}
+export PF_ENGINE_SECONDARY_PORT=${PF_ENGINE_SECONDARY_PORT:=-1}
+export NODE_TAG=${NODE_TAG:=}
+export OPERATIONAL_MODE=${OPERATIONAL_MODE:=STANDALONE}
+export PF_CONSOLE_AUTHENTICATION=${PF_CONSOLE_AUTHENTICATION:=native}
+export PF_ADMIN_API_AUTHENTICATION=${PF_ADMIN_API_AUTHENTICATION:=native}
+export ADMIN_LDAP_URL=${ADMIN_LDAP_URL:=}
+export PF_LDAP_USERNAME=${PF-LDAP-USERNAME:=}
+export PF_LDAP_PASSWORD=${(sh /opt/out/instance/bin/obfuscate.sh $PF-LDAP-PASSWORD | tr -d ' \t\n\r'):=}
+export ADMIN_USER_BASE_DN=${ADMIN_USER_BASE_DN:=}
+export ADMIN_GROUP_BASE_DN=${ADMIN_GROUP_BASE_DN:=}
+export ADMIN_LDAP_USER_FILTER=${ADMIN_LDAP_USER_FILTER:='(sAMAccountName={0})'}
+export ADMIN_LDAP_GROUP_ATTR=${ADMIN_LDAP_GROUP_ATTR:=memberOf}
+export ADMIN_LDAP_ROLE_ADMIN=${ADMIN_LDAP_ROLE_ADMIN:=CN=PFAdminGroup,$ADMIN_GROUP_BASE_DN}
+export ADMIN_LDAP_ROLE_CRYPTO=${ADMIN_LDAP_ROLE_CRYPTO:=CN=PFCryptoGroup,$ADMIN_GROUP_BASE_DN}
+export ADMIN_LDAP_ROLE_USER=${ADMIN_LDAP_ROLE_USER:=CN=PFUserAdminGroup,$ADMIN_GROUP_BASE_DN}
+export ADMIN_LDAP_ROLE_AUDIT=${ADMIN_LDAP_ROLE_AUDIT:=CN=PFAuditorGroup,$ADMIN_GROUP_BASE_DN}

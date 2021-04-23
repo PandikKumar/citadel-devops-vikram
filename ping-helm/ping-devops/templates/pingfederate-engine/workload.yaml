@@ -1,0 +1,12 @@
+{{- include "pinglib.workload" (list . "pingfederate-engine") -}}
+
+
+{{- define "pingfederate-engine.workload" -}}
+spec:
+  template:
+    metadata:
+      labels:
+        clusterIdentifier: {{ include "pinglib.addreleasename" (append . "pingfederate") }}
+{{- end -}}
+
+

@@ -1,0 +1,10 @@
+###############################################
+# For Feature release.
+# spins up only 1 instance of Ping Fed runtime.
+###############################################
+pingfederate-engine:
+  container:
+    replicaCount: 1
+  clustering:
+    autoscaling:
+      enabled: false

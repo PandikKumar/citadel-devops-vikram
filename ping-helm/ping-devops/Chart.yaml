@@ -1,0 +1,7 @@
+apiVersion: v2
+appVersion: "2103"
+description: All Ping Identity product images with integration
+home: https://devops.pingidentity.com/
+name: ping-devops
+type: application
+version: 0.5.3
