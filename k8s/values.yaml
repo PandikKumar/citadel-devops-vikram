@@ -46,8 +46,8 @@ global:
        
   envs:
     ADMIN_LDAP_URL: ldaps://f5-gdc.citadelgroup.com
-    PFLDAPUSERNAME: TestUser
-    PFLDAPPASSWORD: TestPassword
+    PFLDAPUSERNAMESS: TestUser
+    PFLDAPPASSWORDSS: TestPassword
     ADMIN_USER_BASE_DN: DC=citadelgroup,DC=com
     ADMIN_GROUP_BASE_DN: OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com 
     ADMIN_LDAP_USER_FILTER: (&(objectclass=person)(sAMAccountName=${0})(extensionAttribute14=user))
