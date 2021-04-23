@@ -43,8 +43,7 @@ global:
       #PING-IDENTITY-PASSWORD
       #PF-LDAP-USERNAME
       #PF-LDAP-PASSWORD
-      
-  
+       
   envs:
     ADMIN_LDAP_URL: ldaps://f5-gdc.citadelgroup.com
     PF-LDAP-USERNAME: TestUser
