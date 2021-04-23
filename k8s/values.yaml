@@ -183,6 +183,7 @@ pingfederate-engine:
     SERVER_PROFILE_URL:  https://github.com/PandikKumar/citadel-devops-vikram
     SERVER_PROFILE_PATH: server-profiles/pingfederate
     NODE_TAG: "EAST"
+    VERBOSE: "true"
     #SERVER_PROFILE_GIT_USER: root
     #SERVER_PROFILE_GIT_PASSWORD: Admin123$
   container:
