@@ -126,10 +126,7 @@ pingfederate-admin:
   container:
     envFrom:
       - secretRef:
-          name: secrets/dev-pingfederate/serviceaccounts
-          optional: true
-      - secretRef:
-          name: secrets/pf-master-key
+          name: pf-master-key
           optional: true
     resources:
       requests:
