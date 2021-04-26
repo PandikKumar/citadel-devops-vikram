@@ -112,7 +112,6 @@ pingfederate-admin:
     pf-master-key:
       items:
         pf.jwk: /opt/in/instance/server/default/data/pf.jwk
-  env_from
   envs:
     PF_ADMIN_PORT: "9999"
     PF_LOG_LEVEL: "INFO"
