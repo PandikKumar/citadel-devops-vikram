@@ -35,13 +35,7 @@ global:
   #  secret:
   #    devOps: devops-secret
   
-  envFrom:
-    - secretRef:
-        name: secrets/dev-pingfederate/serviceaccounts
-        optional: true
-    - secretRef:
-        name: secrets/pf-master-key
-        optional: true
+
       #PINGIDENTITYAPIUSER
       #PINGIDENTITYPASSWORD
       #PFLDAPUSERNAME
@@ -130,6 +124,13 @@ pingfederate-admin:
     #SERVER_PROFILE_GIT_PASSWORD: Admin123$
     
   container:
+    envFrom:
+      - secretRef:
+          name: secrets/dev-pingfederate/serviceaccounts
+          optional: true
+      - secretRef:
+          name: secrets/pf-master-key
+          optional: true
     resources:
       requests:
         cpu: 0
