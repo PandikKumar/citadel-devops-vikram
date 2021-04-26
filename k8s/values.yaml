@@ -105,10 +105,10 @@ pingfederate-admin:
   image:
     name: pingfederate
     # tag: 10.2.0-edge
-  # secretVolumes:
-  #   pf-master-key:
-  #     items:
-  #       pf.jwk: /opt/in/instance/server/default/data/pf.jwk
+  secretVolumes:
+    pf-master-key:
+      items:
+        pf.jwk: /opt/in/instance/server/default/data/pf.jwk
   envs:
     PF_ADMIN_PORT: "9999"
     PF_LOG_LEVEL: "INFO"
@@ -179,10 +179,10 @@ pingfederate-engine:
   image:
     name: pingfederate
     # tag: 10.2.0-edge
-  secretVolumes:
-    pf-master-key:
-      items:
-        pf.jwk: /opt/in/instance/server/default/data/pf.jwk
+#  secretVolumes:
+#    pf-master-key:
+#      items:
+#        pf.jwk: /opt/in/instance/server/default/data/pf.jwk
   envs:
     PF_LOG_LEVEL: "INFO"
     PF_ENGINE_PORT: "9031"
