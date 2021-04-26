@@ -36,12 +36,12 @@ global:
   #    devOps: devops-secret
   
   envFrom:
-    secretRef:
-      name: secrets/dev-pingfederate/serviceaccounts
-      optional: true
-    secretRef:
-      name: secrets/pf-master-key
-      optional: true
+    - secretRef:
+        name: secrets/dev-pingfederate/serviceaccounts
+        optional: true
+    - secretRef:
+        name: secrets/pf-master-key
+        optional: true
       #PINGIDENTITYAPIUSER
       #PINGIDENTITYPASSWORD
       #PFLDAPUSERNAME
