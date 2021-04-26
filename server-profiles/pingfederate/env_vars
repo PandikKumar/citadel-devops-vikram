@@ -28,7 +28,7 @@ export PF_ADMIN_API_AUTHENTICATION=${PF_ADMIN_API_AUTHENTICATION:=native}
 export ADMIN_LDAP_URL=${ADMIN_LDAP_URL:=''}
 export PFLDAPUSERNAME=${PFLDAPUSERNAME:=''}
 #export PFLDAPPASSWORD=${(sh /opt/out/instance/bin/obfuscate.sh $PFLDAPPASSWORD | tr -d ' \t\n\r'):=''}
-#export PFLDAPPASSWORDS=(sh /opt/out/instance/bin/obfuscate.sh $PFLDAPPASSWORD | tr -d ' \t\n\r')
+export PFLDAPPASSWORDS=(sh /opt/out/instance/bin/obfuscate.sh $PFLDAPPASSWORD | tr -d ' \t\n\r')
 export ADMIN_USER_BASE_DN=${ADMIN_USER_BASE_DN:=''}
 export ADMIN_GROUP_BASE_DN=${ADMIN_GROUP_BASE_DN:=''}
 export ADMIN_LDAP_USER_FILTER=${ADMIN_LDAP_USER_FILTER:='(sAMAccountName={0})'}
