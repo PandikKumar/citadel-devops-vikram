@@ -1240,7 +1240,7 @@
         <Logger name="com.pingidentity.sdk.locale" level="INFO" />
         <Logger name="org.apache.axis" level="INFO" />
         <Logger name="hsqldb.db" level="ERROR" />
-
+        <Logger name="com.bettercloud" level="DEBUG" />
         <!-- ================ -->
         <!-- Loggers -->
         <!-- ================ -->
