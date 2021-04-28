@@ -43,8 +43,6 @@ global:
        
   envs:
     ADMIN_LDAP_URL: ldaps://f5-gdc.citadelgroup.com
-    PFLDAPUSERNAME: TestUser
- #  PFLDAPPASSWORD: TestPassword
     ADMIN_USER_BASE_DN: DC=citadelgroup,DC=com
     ADMIN_GROUP_BASE_DN: OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com 
     ADMIN_LDAP_USER_FILTER: (&(objectclass=person)(sAMAccountName=${0})(extensionAttribute14=user))
@@ -56,9 +54,9 @@ global:
     PING_IDENTITY_ACCEPT_EULA: "YES"
     MUTE_LICENSE_VERIFICATION: "yes"
     #DNS_QUERY_LOCATION: "pingfederate-cluster-dev.default.svc.cluster.local"
-    #VAULT_ADDR: "http://192.168.233.135:8200"
+    VAULT_ADDR: "http://13.235.73.162:8200/"
     #VAULT_TOKEN: "root"
-    #K8S_AUTH_ROLE: "default-dev-pingfederate"
+    K8S_AUTH_ROLE: "vault-role"
     # need this because it's part of config, but not
     # PD_DELEGATOR_HTTPS_PUBLIC_PORT: "443"
   #vault:
@@ -108,7 +106,7 @@ pingfederate-admin:
         pf.jwk: /opt/in/instance/server/default/data/pf.jwk
   envs:
     PF_ADMIN_PORT: "9999"
-    PF_LOG_LEVEL: "INFO"
+    PF_LOG_LEVEL: "DEBUG"
     #PF_CONSOLE_AUTHENTICATION: LDAP
     #PF_ADMIN_API_AUTHENTICATION: LDAP
     PF_CONSOLE_AUTHENTICATION: NATIVE

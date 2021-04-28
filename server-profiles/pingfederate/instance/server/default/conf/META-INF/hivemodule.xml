@@ -179,8 +179,9 @@
             com.pingidentity.crypto.jwk.NoOpMasterKeyEncryptor                    : The default implementation that does no operation.
             com.pingidentity.pingcommons.aws.key.AwsKmsMasterKeyEncryptor         : AWS KMS implementation. Note that admin should specify the key Id in MasterKeySet.xml.
      -->
-    <service-point id="MasterKeyEncryptor" interface="com.pingidentity.sdk.key.MasterKeyEncryptor">
-	   <!-- <create-instance class="com.pingidentity.gsa.devops.keymanagement.VaultMasterKeyEncryptor"/> -->
-        <create-instance class="com.pingidentity.crypto.jwk.NoOpMasterKeyEncryptor"/>
+    
+        <service-point id="MasterKeyEncryptor" interface="com.pingidentity.sdk.key.MasterKeyEncryptor">
+	    <create-instance class="com.pingidentity.gsa.devops.keymanagement.VaultMasterKeyEncryptor"/> 
+    <!--    <create-instance class="com.pingidentity.crypto.jwk.NoOpMasterKeyEncryptor"/> -->
     </service-point>
 </module>
