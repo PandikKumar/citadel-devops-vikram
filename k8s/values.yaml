@@ -117,7 +117,7 @@ pingfederate-admin:
     SERVER_PROFILE_PATH: server-profiles/pingfederate-admin
     SERVER_PROFILE_URL: https://github.com/PandikKumar/citadel-devops-vikram
    # NODE_TAG: "EAST"
-    VERBOSE: "true"
+   # VERBOSE: "false"
     #SERVER_PROFILE_GIT_USER: root
     #SERVER_PROFILE_GIT_PASSWORD: Admin123$
     
