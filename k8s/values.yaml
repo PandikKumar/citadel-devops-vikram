@@ -93,7 +93,7 @@ global:
      pingtoolkit: pingidentity/pingtoolkit:latest
    
 #############################################################
-# pingfederate-admin values..
+# pingfederate-admin values...
 #############################################################
 pingfederate-admin:
   enabled: true
