@@ -10,16 +10,16 @@
 #             be merged with the global settings, and
 #             take precedence.
 ############################################################
- 
+
 ############################################################
-# Global values
+# Global values .
 ############################################################
 global:
   addReleaseNameToResource: prepend
   ingress:
     enabled: true
-    addReleaseNameToHost: append
-    defaultDomain: citadelgroup.com
+    addReleaseNameToHost: prepend
+    defaultDomain: likemindscloud.com
     defaultTlsSecret:
     annotations:
       # nginx example
@@ -27,120 +27,89 @@ global:
       kubernetes.io/ingress.class: "nginx-public"
   image:
     repository: pingidentity
-    name: 
-    tag: latest
+    name:
+    tag: 2102
     pullPolicy: IfNotPresent
-  
-  #license:
-  #  secret:
-  #    devOps: devops-secret
-  
-
-      #PINGIDENTITYAPIUSER
-      #PINGIDENTITYPASSWORD
-      #PFLDAPUSERNAME
-      #PFLDAPPASSWORD
-       
+  license:
+    secret:
+      devOps: devops-secret
+  vault:
+    enabled: false
+    hashicorp:
+      serviceAccountName: vault-auth
+      annotations:
+        agent-inject: true
+        agent-init-first: true
+        agent-pre-populate-only: true
+        log-level: info
+        preserve-secret-case: true
+        role: ping-devops-gte-default
+        secret-volume-path: /run/secrets
+        # serviceAccountName: vault-auth
+      secretPrefix: secret/samirgandhi@pingidentity.com/${K8S_NAMESPACE}/
+      secrets:
+      - name: devops-secret.env
+        secret: devops-secret.env
   envs:
-    ADMIN_LDAP_URL: ldaps://f5-gdc.citadelgroup.com
-    ADMIN_USER_BASE_DN: DC=citadelgroup,DC=com
-    ADMIN_GROUP_BASE_DN: OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com 
-    ADMIN_LDAP_USER_FILTER: (&(objectclass=person)(sAMAccountName=${0})(extensionAttribute14=user))
-    ADMIN_LDAP_GROUP_ATTR: memberOf
-    ADMIN_LDAP_ROLE_ADMIN: CN=pingfederate-admin,OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com
-    ADMIN_LDAP_ROLE_CRYPTO: CN=pingfederate-crypto-admin,OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com
-    ADMIN_LDAP_ROLE_USER: CN=pingfederate-admin,OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com
-    ADMIN_LDAP_ROLE_AUDIT: CN=pingfederate-auditor,OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com
     PING_IDENTITY_ACCEPT_EULA: "YES"
-    MUTE_LICENSE_VERIFICATION: "yes"
-    #DNS_QUERY_LOCATION: "pingfederate-cluster-dev.default.svc.cluster.local"
-    VAULT_ADDR: "http://13.235.73.162:8200/"
-    #VAULT_TOKEN: "root"
-    K8S_AUTH_ROLE: "vault-role"
     # need this because it's part of config, but not
     # PD_DELEGATOR_HTTPS_PUBLIC_PORT: "443"
-  #vault:
-  #  enabled: true
-  #  hashicorp:
-  #    serviceAccountName: vault-auth
-  #    annotations:
-  #      agent-inject: true
-  #      agent-init-first: true
-  #      agent-pre-populate-only: true
-  #      log-level: debug
-  #      preserve-secret-case: true
-  #      role: default-dev-pingfederate
-  #      secret-volume-path: /run/secrets
-  #      serviceAccountName: vault-auth
-  #    secretPrefix: secret/default-dev-pingfederate/
-  #    secrets:
-  #      licenses:
-  #        pingfederate-10.0:
-  #          file: pingfederate.lic
-  #          path: /opt/out/instances/server/default/conf/
-  #      datastore.env:
-  #        to-json:
-  #          file: datastore.env
-  #secretVolumes:
-  #  pingfederate-license:
-  #    items:
-  #      license: /opt/in/instance/server/default/conf/pingfederate.lic
-  #########################################
-  # PingTool for license using devops keys.
-  #########################################
-  externalImage:
-  #  pingtoolkit - based on alpine
-     pingtoolkit: pingidentity/pingtoolkit:latest
-   
+    
 #############################################################
-# pingfederate-admin values...
+# pingfederate-admin values
 #############################################################
 pingfederate-admin:
   enabled: true
+  # container:
+  #   waitFor:
+  #     pingdirectory:
+  #       service: ldaps
   image:
+    repository: pingidentity
     name: pingfederate
     # tag: 10.2.0-edge
-  secretVolumes:
-    pf-master-key:
-      items:
-        pf.jwk: /opt/in/instance/server/default/data/pf.jwk
+    pullPolicy: Always
+  # secretVolumes:
+  #   pf-master-key:
+  #     items:
+  #       pf.jwk: /opt/in/instance/server/default/data/pf.jwk
   envs:
-    PF_ADMIN_PORT: 9999
-    PF_LOG_LEVEL: DEBUG
-    #PF_CONSOLE_AUTHENTICATION: LDAP
-    #PF_ADMIN_API_AUTHENTICATION: LDAP
-    PF_CONSOLE_AUTHENTICATION: NATIVE
+    PF_CONSOLE_AUTHENTICATION: OIDC
     PF_ADMIN_API_AUTHENTICATION: NATIVE
-    SERVER_PROFILE_BASE_PATH: server-profiles/pingfederate
-    SERVER_PROFILE_BASE_URL: https://github.com/PandikKumar/citadel-devops-vikram
+    SERVER_PROFILE_BASE_PATH: profiles/pingfederate
+    SERVER_PROFILE_BASE_URL: https://github.com/pingdevopsprogram/reference-cicd
     SERVER_PROFILE_PARENT: BASE
-    SERVER_PROFILE_PATH: server-profiles/pingfederate-admin
-    SERVER_PROFILE_URL: https://github.com/PandikKumar/citadel-devops-vikram
-   # NODE_TAG: "EAST"
-   # VERBOSE: "false"
-    #SERVER_PROFILE_GIT_USER: root
-    #SERVER_PROFILE_GIT_PASSWORD: Admin123$
-    
-  container:
-    envFrom:
-      - secretRef:
-          name: pf-master-key
-          optional: true
-    resources:
-      requests:
-        cpu: 0
-        memory: 1Gi
-      limits:
-        cpu: 2
-        memory: 2Gi
-  workload:
-    deployment:
-      strategy:
-        type: Recreate
+    SERVER_PROFILE_PATH: profiles/pingfederate_admin
+    SERVER_PROFILE_URL: https://github.com/pingdevopsprogram/reference-cicd
+    PF_ADMIN_PORT: "443"
+    PF_LOG_LEVEL: "DEBUG"
+    # data.json.subst specific vars. 
+    # PA_ENGINE_PRIVATE_PORT_HTTPS: "3000"
+    PD_DELEGATOR_HTTPS_PUBLIC_PORT: "443"
+    # will change per branch (should be a variable? should come from vault?)
+    # PF_OIDC_CLIENT_ID: ""
+    # PF_OIDC_CLIENT_SECRET: ""
+    # will change per account
+    # PF_OIDC_CLIENT_AUTHN_METHOD: client_secret_basic
+    # PF_OIDC_AUTHORIZATION_ENDPOINT: "https://auth.pingone.com/${P1_ADMIN_ENV_ID}/as/authorize"
+    # PF_OIDC_TOKEN_ENDPOINT: "https://auth.pingone.com/${P1_ADMIN_ENV_ID}/as/token"
+    # PF_OIDC_USER_INFO_ENDPOINT: "https://auth.pingone.com/${P1_ADMIN_ENV_ID}/as/userinfo"
+    # PF_OIDC_END_SESSION_ENDPOINT: "https://auth.pingone.com/${P1_ADMIN_ENV_ID}/as/signoff"
+    # PF_OIDC_ISSUER: https://auth.pingone.com/${P1_ADMIN_ENV_ID}/as
+    # PF_OIDC_ACR_VALUES: ""
+    # PF_OIDC_SCOPES: openid email profile
+    # PF_OIDC_USERNAME_ATTRIBUTE_NAME: name
+    # PF_OIDC_ROLE_ATTRIBUTE_NAME: pf_admin_roles
+    # PF_OIDC_ROLE_ADMIN: fullAdmin
+    # PF_OIDC_ROLE_CRYPTOMANAGER: fullAdmin
+    # PF_OIDC_ROLE_USERADMIN: fullAdmin
+    # PF_OIDC_ROLE_EXPRESSIONADMIN: fullAdmin
+    # # don't have auditor and admin
+    # PF_OIDC_ROLE_AUDITOR: roleAuditor
   services:
     https:
-      servicePort: 9999
-      containerPort: 9999
+      servicePort: 443
+      containerPort: 443
       ingressPort: 443
       dataService: true
   probes:
@@ -158,17 +127,6 @@ pingfederate-admin:
       timeoutSeconds: 5
       successThreshold: 1
       failureThreshold: 4
-  ingress:
-    hosts:
-      - host: pingfederate-admin._defaultDomain_
-        paths:
-        - path: /
-          backend:
-            serviceName: https
-    tls:
-      - secretName: _defaultTlsSecret_
-        hosts:
-          - pingfederate-admin._defaultDomain_
 
 #############################################################
 # pingfederate-engine values
@@ -176,79 +134,48 @@ pingfederate-admin:
 pingfederate-engine:
   enabled: true
   image:
+    repository: pingidentity
     name: pingfederate
     # tag: 10.2.0-edge
-#  secretVolumes:
-#    pf-master-key:
-#      items:
-#        pf.jwk: /opt/in/instance/server/default/data/pf.jwk
+    pullPolicy: Always
+  # secretVolumes:
+  #   pf-master-key:
+  #     items:
+  #       pf.jwk: /opt/in/instance/server/default/data/pf.jwk
   envs:
-    PF_LOG_LEVEL: "INFO"
-    PF_ENGINE_PORT: "9031"
-    PF_ENGINE_SECONDARY_PORT: "9032"
-    PF_CONSOLE_AUTHENTICATION: LDAP
-    PF_ADMIN_API_AUTHENTICATION: LDAP
-    SERVER_PROFILE_URL:  https://github.com/PandikKumar/citadel-devops-vikram
-    SERVER_PROFILE_PATH: server-profiles/pingfederate
-    NODE_TAG: "EAST"
-    VERBOSE: "true"
-    #SERVER_PROFILE_GIT_USER: root
-    #SERVER_PROFILE_GIT_PASSWORD: Admin123$
+    PF_CONSOLE_AUTHENTICATION: OIDC
+    PF_ADMIN_API_AUTHENTICATION: NATIVE
+    SERVER_PROFILE_PATH: profiles/pingfederate
+    SERVER_PROFILE_URL: https://github.com/pingdevopsprogram/reference-cicd
+    PF_LOG_LEVEL: DEBUG
+    PF_ADMIN_PORT: "443"
+    # will change per branch
+    # PF_OIDC_CLIENT_ID: ""
+    # PF_OIDC_CLIENT_SECRET: ""
+    # will change per account
+    # PF_OIDC_CLIENT_AUTHN_METHOD: client_secret_basic
+    # PF_OIDC_AUTHORIZATION_ENDPOINT: "https://auth.pingone.com/${P1_ADMIN_ENV_ID}/as/authorize"
+    # PF_OIDC_TOKEN_ENDPOINT: "https://auth.pingone.com/${P1_ADMIN_ENV_ID}/as/token"
+    # PF_OIDC_USER_INFO_ENDPOINT: "https://auth.pingone.com/${P1_ADMIN_ENV_ID}/as/userinfo"
+    # PF_OIDC_END_SESSION_ENDPOINT: "https://auth.pingone.com/${P1_ADMIN_ENV_ID}/as/signoff"
+    # PF_OIDC_ISSUER: https://auth.pingone.com/${P1_ADMIN_ENV_ID}/as
+    # PF_OIDC_ACR_VALUES: ""
+    # PF_OIDC_SCOPES: openid email profile
+    # PF_OIDC_USERNAME_ATTRIBUTE_NAME: name
+    # PF_OIDC_ROLE_ATTRIBUTE_NAME: pf_admin_roles
+    # PF_OIDC_ROLE_ADMIN: fullAdmin
+    # PF_OIDC_ROLE_CRYPTOMANAGER: fullAdmin
+    # PF_OIDC_ROLE_USERADMIN: fullAdmin
+    # PF_OIDC_ROLE_EXPRESSIONADMIN: fullAdmin
+    # PF_OIDC_ROLE_AUDITOR: roleAuditor
+  clustering:
+    autoscaling:
+      enabled: false
+  #     minReplicas: 3
+  #     maxReplicas: 6
+  #     targetCPUUtilizationPercentage: 75
   container:
-    waitFor:
-      pingfederate-admin:
-        service: https
-    replicaCount: 1
-    resources:
-      requests:
-        cpu: 0
-        memory: 2Gi
-      limits:
-        cpu: 4
-        memory: 4Gi
-    waitFor:
-      pingfederate-admin:
-        service: https
-        timeoutSeconds: 300
-  services:
-    https:
-      servicePort: 9031
-      containerPort: 9031
-      ingressPort: 443
-      dataService: true
-    mtls:
-      servicePort: 9032
-      containerPort: 9032
-      ingressPort: 443
-      dataService: true
-    clusterbind:
-      servicePort: 7600
-      containerPort: 7600
-      clusterService: true
-    clusterfail:
-      servicePort: 7700
-      containerPort: 7700
-      clusterService: true
-    clusterExternalDNSHostname:
-  ingress:
-    hosts:
-      - host: sso._defaultDomain_
-        paths:
-        - path: /
-          backend:
-            serviceName: https
-      - host: sso-pki._defaultDomain_
-        paths:
-        - path: /
-          backend:
-            serviceName: mtls
-    tls:
-      - secretName: _defaultTlsSecret_
-        hosts:
-          - sso._defaultDomain_
-      - secretName: _defaultTlsSecret_
-        hosts:
-          - sso-pki._defaultDomain_ 
+    replicaCount: 3
   probes:
     liveness:
       command: /opt/liveness.sh
@@ -264,10 +191,3 @@ pingfederate-engine:
       timeoutSeconds: 5
       successThreshold: 1
       failureThreshold: 4
-  clustering:
-    autoscaling:
-      enabled: true
-      minReplicas: 1
-      maxReplicas: 2
-      targetCPUUtilizationPercentage: 75
-  
