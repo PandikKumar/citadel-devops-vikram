@@ -40,39 +40,38 @@ _valuesFile="${VALUES_FILE}.final"
 
 ## DELETE ONCE VAULT IS WORKING
 ## Getting Client ID+Secret for this app.
-#getPfClientAppInfo
+getPfClientAppInfo
 
-#kubectl apply -f "${K8S_DIR}/secrets/${K8S_NAMESPACE}"
+kubectl apply -f "${K8S_DIR}/secrets/${K8S_NAMESPACE}"
 
 # # install the new profiles, but don't move on until install is successfully deployed. 
 # # tied to chart version to avoid breaking changes.
-#helm upgrade --install \
-#  "${RELEASE}" pingidentity/ping-devops \
-#  --set pingdirectory.envs.PD_PROFILE_SHA="${pingdirectorySha}" \
-#  --set pingfederate-admin.envs.PF_PROFILE_SHA="${pingfederateSha}" \
-#  --set pingfederate-admin.envs.PF_ADMIN_PROFILE_SHA="${pingfederate_adminSha}" \
-#  --set pingfederate-admin.envs.PF_OIDC_CLIENT_ID="${pfEnvClientId}" \
-#  --set pingfederate-admin.envs.PF_OIDC_CLIENT_SECRET="${pfEnvClientSecret}" \
-#  --set pingfederate-engine.envs.PF_OIDC_CLIENT_ID="${pfEnvClientId}" \
-#  --set pingfederate-engine.envs.PF_OIDC_CLIENT_SECRET="${pfEnvClientSecret}" \
-#  --set pingfederate-engine.envs.PF_PROFILE_SHA="${pingfederateSha}" \
-#  --set global.envs.SERVER_PROFILE_BRANCH="${REF}" \
-#  --set pingfederate-admin.envs.SERVER_PROFILE_BASE_BRANCH="${REF}" \
-#  -f "${_valuesFile}" ${_valuesDevFile} \
-#  --namespace "${K8S_NAMESPACE}" --version "${CHART_VERSION}" \
-#  --atomic --timeout "${_timeout}" $_dryRun
+# helm upgrade --install \
+#   "${RELEASE}" pingidentity/ping-devops \
+#   --set pingdirectory.envs.PD_PROFILE_SHA="${pingdirectorySha}" \
+#   --set pingfederate-admin.envs.PF_PROFILE_SHA="${pingfederateSha}" \
+#   --set pingfederate-admin.envs.PF_ADMIN_PROFILE_SHA="${pingfederate_adminSha}" \
+#   --set pingfederate-admin.envs.PF_OIDC_CLIENT_ID="${pfEnvClientId}" \
+#   --set pingfederate-admin.envs.PF_OIDC_CLIENT_SECRET="${pfEnvClientSecret}" \
+#   --set pingfederate-engine.envs.PF_OIDC_CLIENT_ID="${pfEnvClientId}" \
+#   --set pingfederate-engine.envs.PF_OIDC_CLIENT_SECRET="${pfEnvClientSecret}" \
+#   --set pingfederate-engine.envs.PF_PROFILE_SHA="${pingfederateSha}" \
+#   --set global.envs.SERVER_PROFILE_BRANCH="${REF}" \
+#   --set pingfederate-admin.envs.SERVER_PROFILE_BASE_BRANCH="${REF}" \
+#   -f "${_valuesFile}" ${_valuesDevFile} \
+#   --namespace "${K8S_NAMESPACE}" --version "${CHART_VERSION}" \
+#   --atomic --timeout "${_timeout}" $_dryRun
 
-helm upgrade --install \
+  helm upgrade --install \
   "${RELEASE}" pingidentity/ping-devops \
   --set pingfederate-admin.envs.PF_PROFILE_SHA="${pingfederateSha}" \
   --set pingfederate-admin.envs.PF_ADMIN_PROFILE_SHA="${pingfederate_adminSha}" \
   --set pingfederate-engine.envs.PF_PROFILE_SHA="${pingfederateSha}" \
   --set global.envs.SERVER_PROFILE_BRANCH="${REF}" \
   --set pingfederate-admin.envs.SERVER_PROFILE_BASE_BRANCH="${REF}" \
-  -f "${_valuesFile}" ${_valuesDevFile} \
+  -f "${_valuesFile}"  \
   --namespace "${K8S_NAMESPACE}" --version "${CHART_VERSION}" \
   --atomic --timeout "${_timeout}" $_dryRun
-
 
 test "${?}" -ne 0 && exit 1
 
