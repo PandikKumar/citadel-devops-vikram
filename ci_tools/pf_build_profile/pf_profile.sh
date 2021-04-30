@@ -23,7 +23,7 @@ mkdir -p "${pVersion}"
 export pVersion
 
 echo "Downloading config from ${PF_ADMIN_PUBLIC_HOSTNAME}..."
-curl -X GET --basic -u Administrator:${PING_IDENTITY_PASSWORD} --header 'Content-Type: application/json' --header 'X-XSRF-Header: PingFederate' "https://${PF_ADMIN_PUBLIC_HOSTNAME}/pf-admin-api/v1/bulk/export" --insecure | jq -r > "${pVersion}/data.json"
+curl -X GET --basic -u Administrator:Lms@12345 --header 'Content-Type: application/json' --header 'X-XSRF-Header: PingFederate' "https://${PF_ADMIN_PUBLIC_HOSTNAME}/pf-admin-api/v1/bulk/export" --insecure | jq -r > "${pVersion}/data.json"
 
 echo "Creating/modifying ${pVersion}/env_vars and ${pVersion}/data.json.subst..."
 java -jar bulk-config-tool.jar pf-config.json "${pVersion}/data.json" "${pVersion}/env_vars" "${pVersion}/data.json.subst" > "${pVersion}/export-convert.log"
@@ -44,5 +44,5 @@ sed 's/=.*$/=/' "${pVersion}/tmp_env_vars" > "${pVersion}/env_vars"
 cp -f "${pVersion}/env_vars" "vars_diff"
 
 cd "${_initialDir}" || exit
-cp "${_scriptDir}/${pVersion}/data.json.subst" "profiles/pingfederate_admin/instance/bulk-config/data.json.subst"
+cp "${_scriptDir}/${pVersion}/data.json.subst" "server-profiles/pingfederate-admin/instance/bulk-config/data.json.subst"
 test ! $_backup && rm -rf "${_scriptDir}/${pVersion}/"
