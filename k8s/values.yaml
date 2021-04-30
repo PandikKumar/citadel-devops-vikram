@@ -18,7 +18,7 @@ global:
   addReleaseNameToResource: prepend
   ingress:
     enabled: true
-    addReleaseNameToHost: prepend
+    addReleaseNameToHost: append
     defaultDomain: likemindscloud.com
     defaultTlsSecret:
     annotations:
