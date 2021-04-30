@@ -19,7 +19,7 @@ global:
   ingress:
     enabled: true
     addReleaseNameToHost: append
-    defaultDomain: citadelgroup.com
+    defaultDomain: likemindscloud.com
     defaultTlsSecret:
     annotations:
       # nginx example
