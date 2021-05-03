@@ -47,7 +47,7 @@ global:
   envs:
     ADMIN_LDAP_URL: ldap://65.0.104.89
     PFLDAPUSERNAME: kumar
-    PFLDAPPASSWORDSS: Lms@12345
+    PFLDAPPASSWORD: Lms@12345
     ADMIN_USER_BASE_DN: CN=Users,DC=likemindscloud,DC=com
     ADMIN_GROUP_BASE_DN: OU=Likeminds-Group,DC=likemindscloud,DC=com 
     ADMIN_LDAP_USER_FILTER: sAMAccountName={0}
