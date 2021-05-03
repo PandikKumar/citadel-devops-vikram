@@ -45,17 +45,17 @@ global:
       #PFLDAPPASSWORD
        
   envs:
-    ADMIN_LDAP_URL: ldaps://f5-gdc.citadelgroup.com
-    PFLDAPUSERNAME: TestUser
-    PFLDAPPASSWORDSS: TestPassword
-    ADMIN_USER_BASE_DN: DC=citadelgroup,DC=com
-    ADMIN_GROUP_BASE_DN: OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com 
-    ADMIN_LDAP_USER_FILTER: (&(objectclass=person)(sAMAccountName=${0})(extensionAttribute14=user))
+    ADMIN_LDAP_URL: ldap://65.0.104.89
+    PFLDAPUSERNAME: kumar
+    PFLDAPPASSWORDSS: Lms@12345
+    ADMIN_USER_BASE_DN: CN=Users,DC=likemindscloud,DC=com
+    ADMIN_GROUP_BASE_DN: OU=Likeminds-Group,DC=likemindscloud,DC=com 
+    ADMIN_LDAP_USER_FILTER: sAMAccountName={0}
     ADMIN_LDAP_GROUP_ATTR: memberOf
-    ADMIN_LDAP_ROLE_ADMIN: CN=pingfederate-admin,OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com
-    ADMIN_LDAP_ROLE_CRYPTO: CN=pingfederate-crypto-admin,OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com
-    ADMIN_LDAP_ROLE_USER: CN=pingfederate-admin,OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com
-    ADMIN_LDAP_ROLE_AUDIT: CN=pingfederate-auditor,OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com
+    ADMIN_LDAP_ROLE_ADMIN: CN=Security,OU=Likeminds-Group,DC=likemindscloud,DC=com
+    #ADMIN_LDAP_ROLE_CRYPTO: CN=pingfederate-crypto-admin,OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com
+    #ADMIN_LDAP_ROLE_USER: CN=pingfederate-admin,OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com
+    #ADMIN_LDAP_ROLE_AUDIT: CN=pingfederate-auditor,OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com
     PING_IDENTITY_ACCEPT_EULA: "YES"
     MUTE_LICENSE_VERIFICATION: "yes"
     #DNS_QUERY_LOCATION: "pingfederate-cluster-dev.default.svc.cluster.local"
