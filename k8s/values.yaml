@@ -52,10 +52,10 @@ global:
     ADMIN_GROUP_BASE_DN: OU=Likeminds-Group,DC=likemindscloud,DC=com 
     ADMIN_LDAP_USER_FILTER: sAMAccountName={0}
     ADMIN_LDAP_GROUP_ATTR: memberOf
-    ADMIN_LDAP_ROLE_ADMIN: CN=Security,OU=Likeminds-Group,DC=likemindscloud,DC=com
-    #ADMIN_LDAP_ROLE_CRYPTO: CN=pingfederate-crypto-admin,OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com
-    #ADMIN_LDAP_ROLE_USER: CN=pingfederate-admin,OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com
-    #ADMIN_LDAP_ROLE_AUDIT: CN=pingfederate-auditor,OU=Security,OU=Citadel-Groups,DC=citadelgroup,DC=com
+    ADMIN_LDAP_ROLE_ADMIN: CN=Admin,OU=Likeminds-Group,DC=likemindscloud,DC=com
+    ADMIN_LDAP_ROLE_CRYPTO: CN=CryptoAdmin,OU=Likeminds-Group,DC=likemindscloud,DC=com
+    ADMIN_LDAP_ROLE_USER: CN=Admin,OU=Likeminds-Group,DC=likemindscloud,DC=com
+    ADMIN_LDAP_ROLE_AUDIT: CN=Audit,OU=Likeminds-Group,DC=likemindscloud,DC=com
     PING_IDENTITY_ACCEPT_EULA: "YES"
     MUTE_LICENSE_VERIFICATION: "yes"
     #DNS_QUERY_LOCATION: "pingfederate-cluster-dev.default.svc.cluster.local"
