@@ -16,5 +16,6 @@
 
 export ROOT_USER=${PING-IDENTITY-API-USER:=Administrator}
 export PING_IDENTITY_PASSWORD=${PING-IDENTITY-PASSWORD:=2Federate}
+export PF_HOSTNAME=${PF_HOSTNAME:=prod.likemindscloud.com}
 
 
