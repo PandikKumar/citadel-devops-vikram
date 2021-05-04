@@ -471,7 +471,7 @@ role.map.cryptoManager=${ADMIN_LDAP_ROLE_CRYPTO}
 role.map.userAdmin=${ADMIN_LDAP_ROLE_USER}
 
 # The expressionAdmin role must only be granted to the administrators with admin role.
-role.map.expressionAdmin=cn=PFExpressionAdminGroup,ou=groups,${USER_BASE_DN}
+role.map.expressionAdmin=${ADMIN_LDAP_ROLE_ADMIN}
 
 #   -----------------------------
 #   Auditor Role mapping (OPTIONAL)
