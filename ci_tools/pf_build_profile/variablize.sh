@@ -222,7 +222,7 @@ variablize() {
     done
     test -f "${configData}.subst" && configData="${configData}.subst"
     # ls /tmp/data_archive/data
-    find "${configData}" -name '*.subst' -print0 | xargs -0 sed -i '' "s/${sourceHost}/\\$\{${destVar}\}/g"
+    find "${configData}" -name '*.subst' -print0 | xargs -0 sed -i  "s/${sourceHost}/\\$\{${destVar}\}/g"
     echo "${destVar}" >> "${pVersion}/foundHosts"
     variablized="true"
 }
@@ -249,8 +249,11 @@ return_data() {
     case "${inConfigBase}" in 
       *.zip | *.zip.subst)
         cd "${tmpDir}" || exit_usage "can't cd"
-        zip -qr "data.zip.subst" "$(basename "${configData}")"
-        returnData="${tmpDir}/data.zip.subst"
+	echo "config data file name : $(basename "${configData}")  ${tmpDir} "
+        cd "$(basename "${configData}")"
+	zip -qr "data.zip.subst" *
+        #zip -qr "data.zip.subst" "$(basename "${configData}")"
+        returnData="${tmpDir}/data/data.zip.subst"
         cd "${_pwd}" || exit_usage "can't cd"
         ;;
       *)
