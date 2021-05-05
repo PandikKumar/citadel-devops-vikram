@@ -181,6 +181,6 @@
      -->
     <service-point id="MasterKeyEncryptor" interface="com.pingidentity.sdk.key.MasterKeyEncryptor">
 	   <!-- <create-instance class="com.pingidentity.gsa.devops.keymanagement.VaultMasterKeyEncryptor"/> -->
-        <create-instance class="com.pingidentity.crypto.jwk.NoOpMasterKeyEncryptor"/>
+        <create-instance class="com.pingidentity.crypto.jwk.NoOpMasterKeyEncryptor"/> 
     </service-point>
 </module>
