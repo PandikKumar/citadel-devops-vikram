@@ -1,13 +1,13 @@
 #Vault Configuration properties
 vault.api.address=http://13.235.73.162:8200
-vault.api.token=s.l4Og2JVbE4uigO4GvPNlX0kM
+vault.api.token=s.OtLslKRn2moaSDPD4fvgTsgn
 vault.api.verifyssl=false
 vault.api.opentimeout=5
 vault.api.readtimeout=5
 vault.api.maxretry=3
 vault.auth.roleid=VAULT_ROLE_ID
 vault.auth.k8s.role=sg-dev-dev-pingfederate
-vault.create.key=true
+vault.create.key=false
 vault.secret.path=sg-dev/dev/pingfederate/masterkey
 vault.transit.keyname.default=sg-dev-dev-pingfederate
 vault.transit.keytype=rsa-4096
