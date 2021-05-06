@@ -107,7 +107,7 @@ pingfederate-admin:
     # tag: 10.2.0-edge
   envs:
     PF_ADMIN_PORT: "9999"
-    PF_LOG_LEVEL: "INFO"
+    PF_LOG_LEVEL: "DEBUG"
     PF_HOSTNAME: "prod.likemindscloud.com"
     PF_CONSOLE_AUTHENTICATION: LDAP
     #PF_ADMIN_API_AUTHENTICATION: LDAP
