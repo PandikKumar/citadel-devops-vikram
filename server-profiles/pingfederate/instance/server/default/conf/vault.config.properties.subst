@@ -1,6 +1,6 @@
 #Vault Configuration properties
 vault.api.address=http://13.235.73.162:8200
-vault.api.token=s.OtLslKRn2moaSDPD4fvgTsgn
+vault.api.token=
 vault.api.verifyssl=false
 vault.api.opentimeout=5
 vault.api.readtimeout=5
