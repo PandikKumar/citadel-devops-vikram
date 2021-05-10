@@ -28,7 +28,7 @@ global:
   image:
     repository: pingidentity
     name: 
-    tag: latest
+    tag: 9.3.3
     pullPolicy: IfNotPresent
   
   #license:
@@ -47,7 +47,7 @@ global:
   envs:
     ADMIN_LDAP_URL: ldap://13.233.125.139
     PFLDAPUSERNAME: kumar
-    PFLDAPPASSWORD: "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiN3V4T0p6eUUwbiIsInZlcnNpb24iOiIxMC4yLjIuMCJ9..2puTd2mAIEzPvcukuxNWow.7NWy_PMUgsczRz2vNdZa-A.QC-uK75OaKP-DE1cEysClQ"
+    PFLDAPPASSWORD: "Lms@12345"
     ADMIN_USER_BASE_DN: CN=Users,DC=likemindscloud,DC=com
     ADMIN_GROUP_BASE_DN: OU=Likeminds-Group,DC=likemindscloud,DC=com 
     ADMIN_LDAP_USER_FILTER: sAMAccountName={0}
