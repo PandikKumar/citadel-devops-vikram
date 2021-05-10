@@ -108,7 +108,7 @@ pingfederate-admin:
   envs:
     PF_ADMIN_PORT: "9999"
     PF_LOG_LEVEL: "DEBUG"
-    PF_HOSTNAME: "prod.likemindscloud.com"
+    PF_HOSTNAME: "prod1.likemindscloud.com"
     PF_CONSOLE_AUTHENTICATION: LDAP
     #PF_ADMIN_API_AUTHENTICATION: LDAP
     #PF_CONSOLE_AUTHENTICATION: NATIVE
