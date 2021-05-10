@@ -28,7 +28,7 @@ global:
   image:
     repository: pingidentity
     name: 
-    tag: 10.0.8
+    tag: 10.1.5
     pullPolicy: IfNotPresent
   
   #license:
@@ -98,7 +98,7 @@ global:
      pingtoolkit: pingidentity/pingtoolkit:latest
    
 #############################################################
-# pingfederate-admin values.
+# pingfederate-admin values..
 #############################################################
 pingfederate-admin:
   enabled: true
@@ -108,7 +108,7 @@ pingfederate-admin:
   envs:
     PF_ADMIN_PORT: "9999"
     PF_LOG_LEVEL: "DEBUG"
-    PF_HOSTNAME: "prod1.likemindscloud.com"
+    PF_HOSTNAME: "prod.likemindscloud.com"
     PF_CONSOLE_AUTHENTICATION: LDAP
     #PF_ADMIN_API_AUTHENTICATION: LDAP
     #PF_CONSOLE_AUTHENTICATION: NATIVE
