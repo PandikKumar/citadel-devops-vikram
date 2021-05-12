@@ -1,0 +1,14 @@
+ID=1579173
+Organization=Like Minds Consulting Inc
+Product=PingFederate
+Version=10.0
+IssueDate=2020-01-31
+Tier=Subscription
+ExpirationDate=2021-08-01
+EnforcementType=3
+SaasProvisioning=true
+WSTrustSTS=true
+OAuth=true
+Generator=WebAPI
+SignCode=FF0F
+Signature=302C02142F8B0DF181F503E0766708C55A6C268C4DCBA80C02146260510464F0F846024599416134649DBA03295B
