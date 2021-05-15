@@ -28,7 +28,7 @@ global:
   image:
     repository: pingidentity
     name: 
-    tag: latest
+    tag: 9.3.3
     pullPolicy: IfNotPresent
   
   #license:
