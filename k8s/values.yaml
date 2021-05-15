@@ -45,7 +45,7 @@ global:
       #PFLDAPPASSWORD
        
   envs:
-    ADMIN_LDAP_URL: ldap://13.233.125.139
+    ADMIN_LDAP_URL: ldap://13.234.240.83
     PFLDAPUSERNAME: kumar
     PFLDAPPASSWORD: Lms@12345
     ADMIN_USER_BASE_DN: CN=Users,DC=likemindscloud,DC=com
