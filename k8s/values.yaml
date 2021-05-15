@@ -28,7 +28,7 @@ global:
   image:
     repository: pingidentity
     name: 
-    tag: 10.1.5
+    tag: latest
     pullPolicy: IfNotPresent
   
   #license:
@@ -47,7 +47,7 @@ global:
   envs:
     ADMIN_LDAP_URL: ldap://13.233.125.139
     PFLDAPUSERNAME: kumar
-    PFLDAPPASSWORD: "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoidXBPMnY3cjcwaCIsInZlcnNpb24iOiIxMC4xLjUuMCJ9..x8MUxy3Pcb6DY6of6MnPiA.FFJYYYfn48FYdiWLHHR18A.t7NmvlvIesE026pgG0pQ4Q"
+    PFLDAPPASSWORD: Lms@12345
     ADMIN_USER_BASE_DN: CN=Users,DC=likemindscloud,DC=com
     ADMIN_GROUP_BASE_DN: OU=Likeminds-Group,DC=likemindscloud,DC=com 
     ADMIN_LDAP_USER_FILTER: sAMAccountName={0}
@@ -107,7 +107,7 @@ pingfederate-admin:
     # tag: 10.2.0-edge
   envs:
     PF_ADMIN_PORT: "9999"
-    PF_LOG_LEVEL: "DEBUG"
+    PF_LOG_LEVEL: "INFO"
     PF_HOSTNAME: "prod.likemindscloud.com"
     PF_CONSOLE_AUTHENTICATION: LDAP
     #PF_ADMIN_API_AUTHENTICATION: LDAP
