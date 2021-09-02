@@ -1,0 +1,14 @@
+ID=00224320
+WSTrustSTS=true
+OAuth=true
+SaasProvisioning=true
+Product=PingFederate
+Version=10.3
+EnforcementType=3
+Tier=Free
+IssueDate=2021-07-18
+ExpirationDate=2022-07-17
+DeploymentMethod=Traditional
+Organization=LikeMinds Consulting Inc
+SignCode=FF0F
+Signature=302C02142E14B1FBB3AD6521F124634B713693538CE35B7E021410CAB8B1EA021B8F8DA720DE63982379C005D066
