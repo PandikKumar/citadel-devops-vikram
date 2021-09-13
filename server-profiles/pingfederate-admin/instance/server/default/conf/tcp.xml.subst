@@ -67,7 +67,7 @@
          Tags, Filters, or a combination of the two can be used to identify the systems in EC2 that should be a
          part of the PingFederate cluster.
 	 
-         PKJack Test 2
+         PKJack Test 1
 	 
          port_number - The port number that PingFederate listens on for cluster communication. This should normally be left as
                        ${_DOLLAR_}{pf.cluster.bind.port}.
