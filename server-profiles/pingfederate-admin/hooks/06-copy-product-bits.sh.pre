@@ -6,9 +6,9 @@
 
 #Cleanup the files in pVC
 echo "Cleaning up the files in PVC"
-rm -rf /opt/instance/lib
-rm -rf /opt/instance/server/default/deploy
-rm -rf /opt/instance/server/default/conf
+rm -rf /opt/out/instance/lib
+rm -rf /opt/out/instance/server/default/deploy
+rm -rf /opt/out/instance/server/default/conf
 
 # Applies the RAW Server Bits from the built images into SERVER_ROOT
 if test "${RUN_PLAN}" = "RESTART"; then
