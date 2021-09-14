@@ -14,7 +14,7 @@ if test "${RUN_PLAN}" = "RESTART"; then
     rm -rf /opt/out/instance/server/default/deploy
     rm -rf /opt/out/instance/server/default/conf
     echo "Copying SERVER_BITS_DIR (${SERVER_BITS_DIR}) to SERVER_ROOT_DIR (${SERVER_ROOT_DIR})"
-    cp -Ru "${SERVER_BITS_DIR}/lib"* "${SERVER_ROOT_DIR}/lib"
-    cp -Ru "${SERVER_BITS_DIR}/server/default/deploy"* "${SERVER_ROOT_DIR}/server/default/deploy"
-    cp -Ru "${SERVER_BITS_DIR}/server/default/conf"* "${SERVER_ROOT_DIR}/server/default/conf"    
+    cp -Ru "${SERVER_BITS_DIR}/lib"* "${SERVER_ROOT_DIR}/"
+    cp -Ru "${SERVER_BITS_DIR}/server/default/deploy"* "${SERVER_ROOT_DIR}/server/default/"
+    cp -Ru "${SERVER_BITS_DIR}/server/default/conf"* "${SERVER_ROOT_DIR}/server/default/"    
 fi
