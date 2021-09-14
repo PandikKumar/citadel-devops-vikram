@@ -5,13 +5,16 @@
 . "${HOOKS_DIR}/pingcommon.lib.sh"
 
 #Cleanup the files in pVC
-echo "Cleaning up the files in PVC"
-rm -rf /opt/out/instance/lib
-rm -rf /opt/out/instance/server/default/deploy
-rm -rf /opt/out/instance/server/default/conf
+
 
 # Applies the RAW Server Bits from the built images into SERVER_ROOT
 if test "${RUN_PLAN}" = "RESTART"; then
+    echo "Cleaning up the files in PVC"
+    rm -rf /opt/out/instance/lib
+    rm -rf /opt/out/instance/server/default/deploy
+    rm -rf /opt/out/instance/server/default/conf
     echo "Copying SERVER_BITS_DIR (${SERVER_BITS_DIR}) to SERVER_ROOT_DIR (${SERVER_ROOT_DIR})"
-    cp -Ru "${SERVER_BITS_DIR}/"* "${SERVER_ROOT_DIR}/"
+    cp -Ru "${SERVER_BITS_DIR}/lib"* "${SERVER_ROOT_DIR}/lib"
+    cp -Ru "${SERVER_BITS_DIR}/server/default/deploy"* "${SERVER_ROOT_DIR}/server/default/deploy"
+    cp -Ru "${SERVER_BITS_DIR}/server/default/conf"* "${SERVER_ROOT_DIR}/server/default/conf"    
 fi
